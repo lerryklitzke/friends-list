@@ -4,7 +4,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const friends = '';
+let friend = '';
 const database = path.join(__dirname, '../', 'database', 'db.json');
 
 router.get('/', (req, res, next) => {
@@ -12,10 +12,12 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-  friends = { name: req.body.name, age: req.body.age };
-  fs.writeFileSync(database, JSON.stringify(friends), { flag: 'a' });
-  console.log(friends);
+  friend = { name: req.body.name, age: req.body.age };
+  const data = fs.readFileSync(database, { encoding: 'utf8', flag: 'r' });
+  const db = JSON.parse(data);
+  db.push(friend);
+  fs.writeFileSync(database, JSON.stringify(db));
   res.redirect('/');
 });
 
-module.exports = { router, friends };
+module.exports = { router, friend };
