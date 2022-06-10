@@ -8,7 +8,9 @@ let friend = '';
 const database = path.join(__dirname, '../', 'database', 'db.json');
 
 router.get('/', (req, res, next) => {
-  res.sendFile(path.join(__dirname, '../', 'public', 'index.html'));
+  const data = fs.readFileSync(database, { encoding: 'utf8', flag: 'r' });
+  const friendsList = JSON.parse(data);
+  res.render('index', { friendsList });
 });
 
 router.post('/', (req, res, next) => {
