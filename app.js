@@ -15,7 +15,7 @@ app.set('views', 'views');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '/views')));
 
-app.use(index.router);
+app.use(index);
 app.use(db);
 
 app.listen(3000);

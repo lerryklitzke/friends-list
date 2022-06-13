@@ -8,4 +8,4 @@ router.get('/', mid.readFriendsList);
 
 router.post('/', mid.addFriend);
 
-module.exports = { router };
+module.exports = router;
