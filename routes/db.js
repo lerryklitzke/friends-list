@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-const mid = require('../controllers/db-middlewares')
+const middle = require('../controllers/db-middle')
 
-router.get('/api/db/', mid.dbFile);
+router.get('/api/db/', middle.dbFile);
 
 module.exports = router;

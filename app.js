@@ -5,6 +5,7 @@ const { engine } = require('express-handlebars');
 
 const db = require('./routes/db');
 const index = require('./routes/index');
+const error = require('./routes/error');
 
 const app = express();
 
@@ -17,5 +18,6 @@ app.use(express.static(path.join(__dirname, '/views')));
 
 app.use(index);
 app.use(db);
+app.use(error);
 
 app.listen(3000);
