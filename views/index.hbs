@@ -25,8 +25,8 @@
         {{#each friendsList}}
           <div class="friend">
             <button class="delete btn">x</button>
-            <div class="friend-data">{{ name }}</div>
-            <div class="friend-data">{{ age }}</div>
+            <div class="friend-data">{{ this.name }}</div>
+            <div class="friend-data">{{ this.age }}</div>
             <button class="update btn">update</button>
           </div>
         {{/each}}

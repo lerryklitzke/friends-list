@@ -1,25 +1,11 @@
-const path = require('path');
 const fs = require('fs');
 const express = require('express');
+const mid = require('../controllers/index-middlewares');
 
 const router = express.Router();
 
-let friend = '';
-const database = path.join(__dirname, '../', 'database', 'db.json');
+router.get('/', mid.readFriendsList);
 
-router.get('/', (req, res, next) => {
-  const data = fs.readFileSync(database, { encoding: 'utf8', flag: 'r' });
-  const friendsList = JSON.parse(data);
-  res.render('index', { friendsList });
-});
+router.post('/', mid.addFriend);
 
-router.post('/', (req, res, next) => {
-  friend = { name: req.body.name, age: req.body.age };
-  const data = fs.readFileSync(database, { encoding: 'utf8', flag: 'r' });
-  const db = JSON.parse(data);
-  db.push(friend);
-  fs.writeFileSync(database, JSON.stringify(db));
-  res.redirect('/');
-});
-
-module.exports = { router, friend };
+module.exports = { router };
