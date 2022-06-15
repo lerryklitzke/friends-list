@@ -24,12 +24,14 @@
       <div id="list">
         {{#each friends}}
           <div class="friend">
-            <form action="/{{ this.id }}" method="GET">
+            <form action="/delete/{{ this.id }}" method="GET">
               <button class="delete btn" type="submit">x</button>
             </form>
             <div class="friend-data">{{ this.name }}</div>
             <div class="friend-data">{{ this.age }}</div>
-            <button class="update btn">update</button>
+            <!-- <form action="/update/{{ this.id }}" method="PUT">
+              <button class="update btn">update</button>
+            </form> -->
           </div>
         {{/each}}
       </div>

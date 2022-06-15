@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.get('/', middle.readFriendsList);
 router.post('/', middle.addFriend);
-router.get('/:id', middle.deleteFriend);
+router.get('/delete/:id', middle.deleteFriend);
 
 module.exports = router;
