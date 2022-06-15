@@ -9,7 +9,7 @@
 </head>
 <body>
   <div class="container">
-    <form action="/" method="POST">
+    <form id="form" action="/" method="POST">
       <h2>Add New Friend</h2>
       <input type="text" id="name" name="name" placeholder="Name">
       <input type="number" id="age" name="age" placeholder="Age">
@@ -24,7 +24,9 @@
       <div id="list">
         {{#each friends}}
           <div class="friend">
-            <button class="delete btn">x</button>
+            <form action="/{{ this.id }}" method="GET">
+              <button class="delete btn" type="submit">x</button>
+            </form>
             <div class="friend-data">{{ this.name }}</div>
             <div class="friend-data">{{ this.age }}</div>
             <button class="update btn">update</button>
